@@ -52,7 +52,7 @@ button{
     transform: translate(-50%, -50%);
 
     text-align: center;
-	z-index: 100;
+
 
 }
 
@@ -76,18 +76,32 @@ button{
     display: grid;
     justify-items: center; /* Centers all children horizontally */
     row-gap: 10px;
+
+}
+
+.click-to-hide {
+    position: fixed;
+
+    top: 70%;
+    left: 50%;
+    width:  300px;
+    transform: translate(-50%, -60%);
+
 }
 
 .popup-box {
-  margin-top: 35%;
-  position:  relative;
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-  width: 300px;
-  text-align: center;
-  z-index: 101;
+    position: fixed;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 300px;
+    padding: 20px;
+
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
 .popup-box-transparent {
@@ -212,13 +226,13 @@ button{
 
 <div id= "divZ">
     <div class = "img-holder" id="imageHolder">
-        <img src="assets/background1.png" id="background1">
-        <img src="assets/background2.png" id="background2">
-        <img src="assets/room1.png" id="room1">
-        <img src="assets/room2.png" id="room2">
-        <img src="assets/room3.png" id="room3">
-        <img src="assets/room4.png" id="room4">
-        <img src="assets/machine.png" id="machine">
+        <img src="background1.png" id="background1">
+        <img src="background2.png" id="background2">
+        <img src="room1.png" id="room1">
+        <img src="room2.png" id="room2">
+        <img src="room3.png" id="room3">
+        <img src="room4.png" id="room4">
+        <img src="machine.png" id="machine">
 
         <a href="https://www.example.com"> Thanks for trying my game :) Click here to leave me a note </a>
     </div>
@@ -233,7 +247,7 @@ button{
 	    <div id="divC"></div>
 
 
-	    <div id="popupOverlay" class="popupOverlay">
+	    <div id="popupOverlay" >
 		  <!-- Actual Popup Box -->
           <div id = "functionBackground" > </div>
 
@@ -244,7 +258,7 @@ button{
 		  </div>
 
           <div class="center-below-sibling"> 
-            <p > click anywhere to hide </p>
+            <p class = "click-to-hide"> click anywhere to hide </p>
           </div>
 		</div>
 
@@ -259,7 +273,7 @@ button{
 		    
 		  </div>
           <div class="center-below-sibling"> 
-            <p > click anywhere to hide </p>
+            <p class = "click-to-hide"> click anywhere to hide </p>
           </div>
           
 		</div>

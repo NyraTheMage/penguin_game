@@ -49,7 +49,7 @@ const RESOURCE_MODEL = [
     },
     {
         name: "fishing_net",
-        description: "catching innocent fish minding its own business",
+        description: "catching innocent fish",
         rarity: 1
     }
     ,
