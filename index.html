@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<style>
+html, body {
+    margin: 0;
+    height: 100%;
+    font-family: Consolas, monospace;
+}
+
+button{
+
+    font-family: Consolas, monospace;
+}
+
+#divA {
+    width: min(100vw, calc(100vh * 9 / 16));
+    height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#divB {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    background: lightblue;
+}
+
+#divC {
+    flex: 1;
+    background: lightgray;
+}
+
+#divBContainer {
+    padding: 20px 10px;   /* 20px above and below */
+}
+
+
+#divZ {
+    position: fixed;
+    inset: 0;
+    background: darkgrey;
+}
+
+.global-centered {
+	position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    text-align: center;
+	z-index: 100;
+
+}
+
+.overlay {
+    position: absolute;
+    inset: 6px;
+    background: rgba(255, 0, 0, 0.5);
+
+}
+
+.popupOverlay {
+	/*display: none; */
+ 	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(100, 0, 0, 0.5); 
+	z-index: 100;
+
+    display: grid;
+    justify-items: center; /* Centers all children horizontally */
+    row-gap: 10px;
+}
+
+.popup-box {
+  margin-top: 35%;
+  position:  relative;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  width: 300px;
+  text-align: center;
+  z-index: 101;
+}
+
+.popup-box-transparent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Offsets the element to center it perfectly */
+  background-color: none;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  width: 300px;
+  text-align: center;
+}
+
+@keyframes slideUpFast {
+  from {
+    transform: translate(-50%, -40%);
+    opacity: 0.5;                   /* Optional: fade in while sliding */
+  }
+  to {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+}
+.popup-enter {
+    animation: slideUpFast 100ms ;
+}
+
+
+
+/* stuff from vdraw */
+
+
+
+  button {
+    padding: 12px 24px;     /* Increases clickable area */
+    font-size: 16px;        /* Makes text bigger */
+    border-radius: 6px;     /* Optional: rounded corners */
+    cursor: pointer;        /* Changes cursor on hover */
+  }
+
+  button:active {
+    background-color: red; /* Background color when pressed */
+  }
+
+
+
+
+
+.square-img {
+  width: 50px;
+  height: 50px;
+  display: block;
+  margin: 0 auto;
+}
+
+.recipes {
+    position: absolute; 
+    top: 50px; 
+    left: 50px;
+}
+
+#functionBackground {
+    position: absolute;
+    inset: 0px;
+  background-color: rgba(0, 255, 0, 0.5); 
+}
+
+
+.img-holder {
+    position: absolute;
+    width: 100%;
+    height: 100vh;      /* or whatever height you want */
+    overflow: hidden;
+}
+
+.img-holder img {
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    height: 100%;
+    width: auto;
+
+    /* optional */
+    user-select: none;
+    pointer-events: none;
+    display:  none;
+}
+
+.img-holder a {
+    position: absolute;
+
+    top: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    height: 100%;
+    width: auto;
+
+    display:  block;
+    z-index: 100;
+}
+
+#background2{
+    display:  block;
+    opacity: 0;
+}
+#background1{
+    display:  block;
+}
+#machine{
+    display:  block;
+}
+
+</style>
+</head>
+<body>
+
+<div id= "divZ">
+    <div class = "img-holder" id="imageHolder">
+        <img src="assets/background1.png" id="background1">
+        <img src="assets/background2.png" id="background2">
+        <img src="assets/room1.png" id="room1">
+        <img src="assets/room2.png" id="room2">
+        <img src="assets/room3.png" id="room3">
+        <img src="assets/room4.png" id="room4">
+        <img src="assets/machine.png" id="machine">
+
+        <a href="https://www.example.com"> Thanks for trying my game :) Click here to leave me a note </a>
+    </div>
+
+    </div>
+	<div id="divA">
+        
+        
+        <div style="position: relative;">
+		  <button id="recipes" class = "recipes"> RECIPES </button>
+        </div>
+	    <div id="divC"></div>
+
+
+	    <div id="popupOverlay" class="popupOverlay">
+		  <!-- Actual Popup Box -->
+          <div id = "functionBackground" > </div>
+
+		  <div id = "functionHolder" class="popup-box">
+		    <h2>RECIPES</h2>
+		    <p> collect resources from beach to make recipes</p>
+		    
+		  </div>
+
+          <div class="center-below-sibling"> 
+            <p > click anywhere to hide </p>
+          </div>
+		</div>
+
+
+
+		<div id="popupText" class="popupOverlay">
+		  <!-- Actual Popup Box -->
+		  <div class="popup-box">
+		    <h2> heres my text </h2>
+		    <!-- img class = "square-img">-->
+		    <p> texxxt </p>
+		    
+		  </div>
+          <div class="center-below-sibling"> 
+            <p > click anywhere to hide </p>
+          </div>
+          
+		</div>
+
+		<div id="fastPopupText" class="global-centered" class = "popup-enter">
+		  <!-- Actual Popup Box -->
+			
+		 		<p><strong style="background-color: white; color: black; padding: 2px 4px;">bold text with a white highlight</strong></p>
+		 	
+		</div>
+
+
+	</div>
+
+</div>
+
+</body>
+</html>
+<script type="text/javascript" src="new_fn_bar.js"></script>
+<script type="text/javascript" src="script.js"></script>
+
+
